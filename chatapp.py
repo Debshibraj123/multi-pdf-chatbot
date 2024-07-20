@@ -25,6 +25,14 @@ def get_pdf_text(pdf_docs):
             text += page.extract_text()
     return text
 
+def get_pdf_metadata(pdf_docs):
+    metadata_list = []
+    for pdf in pdf_docs:
+        pdf_reader = PdfReader(pdf)
+        metadata = pdf_reader.metadata
+        metadata_list.append(metadata)
+    return metadata_list
+
 def get_text_chunks(text):
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=50000, chunk_overlap=1000)
     chunks = text_splitter.split_text(text)
@@ -88,6 +96,14 @@ def main():
                 text_chunks = get_text_chunks(raw_text)  # get the text chunks
                 get_vector_store(text_chunks)  # create vector store
                 st.success("Done")
+
+                # Display PDF Metadata
+                metadata_list = get_pdf_metadata(pdf_docs)
+                for metadata in metadata_list:
+                    st.write(metadata)
+
+                st.download_button("Download Extracted Text", raw_text, file_name="extracted_text.txt")
+                st.download_button("Download Vector Store", "faiss_index", file_name="faiss_index.zip")
         
         st.write("---")
         # st.image("img/gkj.jpg")
