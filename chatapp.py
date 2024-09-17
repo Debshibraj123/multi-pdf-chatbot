@@ -85,7 +85,6 @@ def main():
         user_input(user_question)
 
     with st.sidebar:
-        # st.image("img/Robot.jpg")
         st.write("---")
         
         st.title("📁 PDF File's Section")
@@ -106,17 +105,7 @@ def main():
                 st.download_button("Download Vector Store", "faiss_index", file_name="faiss_index.zip")
         
         st.write("---")
-        # st.image("img/gkj.jpg")
-        st.write("AI App created by @ Shibraj")  # add this line to display the image
-
-    # st.markdown(
-    #     """
-    #     <div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #0E1117; padding: 15px; text-align: center;">
-    #         © <a href="https://github.com/gurpreetkaurjethra" target="_blank">Gurpreet Kaur Jethra</a> | Made with ❤️
-    #     </div>
-    #     """,
-    #     unsafe_allow_html=True
-    # )
+        st.write("AI App created by @ Shibraj")  
 
 if __name__ == "__main__":
     main()
